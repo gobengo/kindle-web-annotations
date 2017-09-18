@@ -8,6 +8,7 @@
   },
   "main": "index.js",
   "scripts": {
+    "start": "node .",
     "test": "node test",
     "preversion": "npm test"
   },
