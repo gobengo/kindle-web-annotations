@@ -17,7 +17,7 @@ require('fs').createReadStream(fileName)
 You can also use it as a small CLI:
 
 ```
-⚡ node . fixtures/correlate.txt | jq .
+⚡ npx kindle-web-annotations | jq .
 {
   "@context": [
     "http://www.w3.org/ns/anno.jsonld",
