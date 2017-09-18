@@ -1,12 +1,19 @@
 {
   "name": "kindle-web-annotations",
   "version": "1.0.0",
-  "description": "",
+  "description": "Convert Kindle Clippings to Objects that conform with W3C Web Annotation Vocabulary",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/gobengo/kindle-web-annotations.git"
+  },
   "main": "index.js",
   "scripts": {
     "test": "node test"
   },
-  "author": "",
+  "author": {
+    "name": "Benjamin Goering",
+    "url": "https://bengo.is"
+  },
   "license": "ISC",
   "dependencies": {
     "kindle-clippings": "^1.0.0",
