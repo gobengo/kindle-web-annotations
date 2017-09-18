@@ -1,6 +1,6 @@
 {
   "name": "kindle-web-annotations",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Convert Kindle Clippings to Objects that conform with W3C Web Annotation Vocabulary",
   "repository": {
     "type": "git",
