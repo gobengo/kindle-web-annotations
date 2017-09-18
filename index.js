@@ -26,7 +26,7 @@ const ClippingTextToOpenAnnotation = exports.ClippingTextToOpenAnnotation = clas
 }
 
 // write in objects like those that come from 'kindle-clippings' parser
-const ClippingObjectToOpenAnnotation = exports.ClippingObjectToOpenAnnotation = class ClippingObjectToOpenAnnotation extends Transform {
+const ClippingObjectToOpenAnnotation = class ClippingObjectToOpenAnnotation extends Transform {
   constructor () {
     super({
       objectMode: true,

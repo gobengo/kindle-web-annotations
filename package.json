@@ -1,16 +1,15 @@
 {
-  "name": "kindle-openannotation",
+  "name": "kindle-web-annotations",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "kindle-clippings": "^1.0.0",
-    "pumpify": "^1.3.5",
     "uuid": "^3.1.0"
   }
 }
