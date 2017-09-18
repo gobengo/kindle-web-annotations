@@ -1,11 +1,11 @@
-const { ClippingTextToOpenAnnotation } = require('.')
+const { ClippingTextToWebAnnotation } = require('.')
 const fs = require('fs')
 const path = require('path')
 
-const main = module.exports = (fileName=path.join(__dirname, 'fixtures/one.txt')) => {
+const main = module.exports = (fileName = path.join(__dirname, 'fixtures/correlate.txt')) => {
   fs.createReadStream(fileName)
-    .pipe(new ClippingTextToOpenAnnotation)
-    .on('data', annotation => console.log(JSON.stringify(annotation)))  
+    .pipe(new ClippingTextToWebAnnotation())
+    .on('data', annotation => console.log(JSON.stringify(annotation)))
 }
 
 if (require.main === module) {
