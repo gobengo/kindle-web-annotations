@@ -1,6 +1,6 @@
 # kindle-web-annotations
 
-Library to parse an Amazon Kindle `My Clippings.txt` file and emit objects that use the [W3C Web Annotation Vocabulary](https://www.w3.org/TR/annotation-vocab/).
+node.js library to parse an Amazon Kindle `My Clippings.txt` file and emit objects that use the [W3C Web Annotation Vocabulary](https://www.w3.org/TR/annotation-vocab/).
 
 ## Usage
 
