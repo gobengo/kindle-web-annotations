@@ -4,6 +4,7 @@ const fs = require('fs')
 const kindleClippingsParser = require('kindle-clippings')
 const { Duplex, Transform } = require('stream')
 const uuid = require('uuid').v4
+const parser = require('./parser')
 
 // write in chunks of your "My Clippings File"
 const ClippingTextToOpenAnnotation = exports.ClippingTextToOpenAnnotation = class ClippingTextToOpenAnnotation extends Duplex {
@@ -76,13 +77,15 @@ const ClippingObjectToOpenAnnotation = exports.ClippingObjectToOpenAnnotation = 
   }
 }
 
-// e.g. "Zero to One: Notes on Startups, or How to Build the Future (Peter Thiel;Blake Masters)"
+// e.g. "Zero to One: Notes on Startups, or How to Build the Future (5th edition) (Peter Thiel (srs dude);Blake Masters)"
 function parseClippingTitle (titlePlusAuthors) {
-  // @TODO - use a parser or something to handle nested parens in authors (unlikely)
-  const pattern = /(.*) \(([^\)]*)\)$/
-  const match = titlePlusAuthors.match(pattern)
-  const title = match ? match[1] : titlePlusAuthors
-  const authors = match && (match[2].split(';'))
+  // the authors are in the last set of parentheses, ';'-delimited
+  // use a parser to handle nested parentheses. regex cant very easily
+  const { parse, serialize } = parser('(', ')')
+  const parsed = parse(titlePlusAuthors)
+  const [titleTree, authorTree] = [parsed.slice(0, -1), parsed.slice(-1)[0]]
+  const title = serialize(titleTree).trim()
+  const authors = serialize(authorTree).split(';')
   const author = authors && (authors.length === 1 ? authors[0] : authors)
   return {
     title,
@@ -112,9 +115,16 @@ async function main (clippingsFile) {
   if (!clippingsFileStream) { throw new Error(`Provide a kindle 'My Clippings' file as first argument or pipe to stdin`) }
   clippingsFileStream
     .pipe(new ClippingTextToOpenAnnotation())
-    .on('data', clipping => {
-      console.log(JSON.stringify(clipping))
-    })
+    .pipe(new Transform({
+      writableObjectMode: true,
+      transform (chunk, encoding, callback) {
+        try {
+          this.push(JSON.stringify(chunk))
+        } catch (error) { return callback(error) }
+        callback()
+      }
+    }))
+    .pipe(process.stdout)
   return new Promise((resolve, reject) => {
     clippings
       .on('error', reject)
