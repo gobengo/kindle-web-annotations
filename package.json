@@ -8,7 +8,8 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": "node test"
+    "test": "node test",
+    "preversion": "npm test"
   },
   "author": {
     "name": "Benjamin Goering",
