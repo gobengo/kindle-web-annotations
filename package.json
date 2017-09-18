@@ -20,5 +20,7 @@
     "kindle-clippings": "^1.0.0",
     "uuid": "^3.1.0"
   },
-  "bin": "./index.js"
+  "bin": {
+    "kindle-web-annotations": "./index.js"
+  }
 }
