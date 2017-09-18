@@ -1,10 +1,10 @@
 {
   "name": "kindle-web-annotations",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Convert Kindle Clippings to Objects that conform with W3C Web Annotation Vocabulary",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/gobengo/kindle-web-annotations.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gobengo/kindle-web-annotations.git"
   },
   "main": "index.js",
   "scripts": {
