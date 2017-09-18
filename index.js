@@ -47,6 +47,11 @@ const ClippingObjectToOpenAnnotation = class ClippingObjectToOpenAnnotation exte
           '@context': 'http://www.w3.org/ns/anno.jsonld',
           id: `urn:uuid:${uuid()}`,
           type: 'Annotation',
+          motivation: {
+            highlight: 'highlighting',
+            bookmark: 'bookmarking',
+            note: 'commenting'
+          }[clipping.details.type],
           created: clipping.created,
           // @TODO correlate notes/highlights on same location/time and add as body
           // body: {
